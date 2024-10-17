@@ -12,6 +12,7 @@ export default {
       "t-color": "#151515", // this is for primary text colors
       "st-color": "#5c5c5c", //this is for secondary text colors
       "h-color": "#101d30",//this is for heading colors
+      "link-color": '#457b9d'
     },
     borderRadius: {
       button: '16px'
