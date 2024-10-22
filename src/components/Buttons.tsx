@@ -6,7 +6,7 @@ const OutlinedButton: React.FC<ButtonType> = ({ text, disable = false }) => {
     <button
       className={`border w-[200px] p-4 rounded-button border-secondary font-semibold ${
         disable && "bg-bd-color hover:bg-bd-color hover:text-black"
-      } hover:bg-primary hover:text-white`}
+      } hover:bg-secondary hover:text-white`}
       disabled={disable}
     >
       {text}

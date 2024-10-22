@@ -14,6 +14,7 @@ export default {
         "h-color": "#101d30",//this is for heading colors
         "link-color": '#457b9d',
         "bd-color" : '#858A83',//this is the color of the border
+        error : '#d13440'
       },
       borderRadius: {
         button: '16px'
