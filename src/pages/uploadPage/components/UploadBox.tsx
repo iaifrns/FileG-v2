@@ -1,14 +1,16 @@
 import { Icon } from "@iconify-icon/react";
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import isDropElementOk from "../../../helper/isDropElementOk";
+import { ContextProp } from "../../../hooks/useProperties";
+import changeFileListToFile from "../../../helper/changeFileListType";
 
 const UploadBox = () => {
-  const [files, setFiles] = useState<File[]>([]);
+  const webContext = useContext(ContextProp)
   const [errorMessage, setErrorMessage] = useState("");
 
   const onFileChange = (e: any) => {
     const file = e.target.files;
-    console.log(file);
+    webContext.addFiles(changeFileListToFile(file as FileList))
   };
 
   const onClickUploadLink = () => {
@@ -35,8 +37,8 @@ const UploadBox = () => {
     const files = e.dataTransfer.files
     const isFilesOk = isDropElementOk(files, setErrorMessage, wrapperRef)
 
-    if(isFilesOk){
-      setFiles([...files])
+    if(!isFilesOk){
+      webContext.addFiles(changeFileListToFile(files))
     }
   };
 
@@ -61,7 +63,7 @@ const UploadBox = () => {
       <Icon icon="uil:upload" className="text-[70px]" />
       <p className="text-lg font-semibold">
         Drag & Drop or{" "}
-        <a href="#" onClick={onClickUploadLink} className="text-secondary">
+        <a href="#" onClick={onClickUploadLink} className="text-link-color hover:text-primary">
           Choose file
         </a>{" "}
         to upload
