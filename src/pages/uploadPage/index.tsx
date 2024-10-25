@@ -10,6 +10,8 @@ import fileSizeInKB from "../../helper/fileSize";
 const UploadPage = () => {
   const webContext = useContext(ContextProp);
 
+  console.log(webContext.files.length < 1)
+
   return (
     <div className="w-full flex flex-col gap-16 items-center">
       <TopBar />
@@ -18,7 +20,7 @@ const UploadPage = () => {
           Add a new file (csv/xlsx)
         </p>
         <UploadBox />
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full max-h-[250px] overflow-y-auto">
           {webContext.files.length > 0 ? (
             <div>
               {webContext.files.map((file, index) => (
@@ -37,7 +39,7 @@ const UploadPage = () => {
         <Divider />
         <div className="flex justify-between w-full">
           <OutlinedButton text="Cancel" />
-          <DefaultButton text="Import" disable={true} />
+          <DefaultButton text="Import" disable={webContext.files.length<1}/>
         </div>
       </div>
     </div>

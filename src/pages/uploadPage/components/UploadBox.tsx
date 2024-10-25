@@ -75,6 +75,7 @@ const UploadBox = () => {
         id="upload-input"
         onChange={onFileChange}
         hidden
+        multiple
       />
       <p
         className={
